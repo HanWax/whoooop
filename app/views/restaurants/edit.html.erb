@@ -1,0 +1,7 @@
+Edit restaurant
+
+<%= form_for @restaurant do |f| %>
+	<%= f.text_field :name, value: @restaurant.name %>
+	<%= f.text_field :cuisine, value: @restaurant.cuisine %>
+	<%= f.submit 'Edit' %>
+<% end %>
