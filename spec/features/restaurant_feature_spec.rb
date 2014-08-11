@@ -19,7 +19,7 @@ describe 'restaurants' do
 			
 			fill_in 'restaurant[name]', with: "Whoop Sushi"
 			fill_in 'restaurant[cuisine]', with: "Japanese"
-			click_on 'Add'
+			click_on 'Create Restaurant'
 			expect(page).to have_content("Whoop Sushi")
 			expect(page).to have_content("Japanese")
 		end
@@ -35,7 +35,7 @@ describe 'restaurants' do
 			expect(page).to have_content("Whoop Burgers")
 		end
 
-		it 'should dispaly edit restaurant form' do 
+		it 'should display edit restaurant form' do 
 			visit '/restaurants'
 			click_on("Edit")
 			expect(page).to have_content("Edit restaurant")
@@ -46,6 +46,16 @@ describe 'restaurants' do
 			visit "/restaurants/#{restaurant.id}/edit"
 			fill_in 'restaurant[name]', with: "Whoop Sushi"
 			fill_in 'restaurant[cuisine]', with: "Japanese"
+			click_on 'Update Restaurant'
+			expect(page).to have_content("Whoop Sushi")
+		end
+
+		it 'can delete restaurants from the database' do 
+			restaurant = Restaurant.find_by(name: "Whoop Burgers")
+			visit "/restaurants"
+			click_on("Delete")
+			expect(page).not_to have_content("Whoop Burgers")
+			expect(page).to have_content("Deleted")
 		end
 	end
 
