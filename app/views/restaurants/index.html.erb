@@ -4,6 +4,7 @@
 		<li><%= restaurant.name %> (<%= restaurant.cuisine %>)
 		<%= link_to 'Edit', edit_restaurant_path(restaurant) %>
 		<%= link_to 'Delete', restaurant_path(restaurant), method: :delete %>
+		<%= link_to 'Write review', new_review_path %>
 		</li> 
 	<% end %>
 </ul>
