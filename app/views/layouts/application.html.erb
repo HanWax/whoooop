@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<h1>Whoop!</h1>
+		<%= link_to 'Add restaurant', new_restaurant_path %>
 
+	</header>
+
+	
 <%= notice %>
 <%= yield %>
 

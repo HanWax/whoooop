@@ -1,3 +1,52 @@
 // Place all the styles related to the restaurants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+.Restaurantfeed {
+	
+	margin-left: 1%;
+	width: 50%;
+
+	article {
+		padding: 1%;
+		border: 1px solid;
+		border-radius: 6px;
+		margin-bottom: 1%;
+	}
+
+	h2 {
+		color: $cyan;
+	}
+
+	.link {
+		text-align: right;
+	}
+
+	a {
+		color: $red;
+	}
+
+	p {
+		color: $base00;
+	}
+
+	h3 {
+		color: $green;
+	}
+}
