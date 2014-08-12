@@ -1,1 +1,13 @@
-Enter review for <%= @restaurant.new %>
+Enter review for <%= @restaurant.name %>
+
+<%= form_for [@restaurant, @review] do |f| %>
+<%= f.label :thoughts %>
+<%= f.text_area :thoughts, placeholder: 'Enter your thoughts' %>
+
+<%= f.label :rating %>
+<%= f.select :rating, (1..5) %> 
+
+<%= f.submit %>
+
+<% end %> 
+
