@@ -1,3 +1,11 @@
+<% if @restaurant.errors.any? %>
+The form has the following errors:
+	<% @restaurant.errors.full_messages.each do |message| %>
+		<%= message %>
+	<% end %> 
+<% end %> 
+
+
 <%= form_for @restaurant do |f| %>
 	<%= f.text_field :name, placeholder: 'Enter name of restaurant' %>
 	<%= f.text_field :cuisine, placeholder: 'Enter cuisine of restaurant' %>

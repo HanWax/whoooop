@@ -8,9 +8,14 @@ class RestaurantsController < ApplicationController
 	end 
 
 	def create
-		@restaurant = Restaurant.create(params[:restaurant].permit(:name, :cuisine))
-		flash[:notice] = "Restaurant created"
-		redirect_to '/restaurants'
+		@restaurant = Restaurant.new(params[:restaurant].permit(:name, :cuisine))
+		if @restaurant.save 
+			flash[:notice] = "Restaurant created"
+			redirect_to '/restaurants'
+		else
+			render 'new'
+		end
+		
 	end
 
 	def edit

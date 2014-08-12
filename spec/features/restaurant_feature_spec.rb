@@ -59,5 +59,13 @@ describe 'restaurants' do
 		end
 	end
 
+	context 'wrong form' do 
+		it 'should alert us when there is an error' do 
+			visit '/restaurants/new'
+			click_on "Create Restaurant"
+			expect(page).to have_content "The form has the following errors:"
+		end 
+	end 
+
 
 end

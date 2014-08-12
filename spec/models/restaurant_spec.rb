@@ -23,4 +23,11 @@ RSpec.describe Restaurant, :type => :model do
       expect(restaurant.average_rating).to eq(4)
     end  
   end
+
+  context 'validations' do 
+    it 'cannot save if there is no name' do 
+      restaurant = Restaurant.create(cuisine: "Japanese")
+      expect(Restaurant.count).to eq 0
+    end
+  end 
 end

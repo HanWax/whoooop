@@ -27,7 +27,6 @@ describe 'reviews' do
 		it 'should display a restaurant with the average rating' do
 			@restaurant.reviews.create(thoughts: "great", rating: 4)
 			@restaurant.reviews.create(thoughts: "terrible", rating: 2)
-
 			visit '/restaurants'
 			expect(page).to have_content("Average rating: 3")
 		end
