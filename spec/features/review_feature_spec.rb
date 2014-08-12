@@ -31,5 +31,4 @@ describe 'reviews' do
 			expect(page).to have_content("Average rating: 3")
 		end
 	end 
- 	
 end

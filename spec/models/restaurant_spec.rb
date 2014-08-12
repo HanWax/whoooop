@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Restaurant, :type => :model do
   context 'creating new entries' do
   	it 'should be able to create a new entry' do
-  		Restaurant.create(name: "Whoop Burger")
+  		Restaurant.create(name: "Whoop Burger", cuisine: "American")
   		expect(Restaurant.count).to eq 1
   	end
 
   	it 'should be able to edit an entry' do 
-  		Restaurant.create(name: "Whoop Bar")
+  		Restaurant.create(name: "Whoop Bar", cuisine: "Drinks")
   		restaurant = Restaurant.find_by(name: "Whoop Bar")
   		restaurant.update(name: "Whoop Sushi")
   		expect(restaurant.name).to eq("Whoop Sushi")
@@ -25,9 +25,25 @@ RSpec.describe Restaurant, :type => :model do
   end
 
   context 'validations' do 
-    it 'cannot save if there is no name' do 
-      restaurant = Restaurant.create(cuisine: "Japanese")
-      expect(Restaurant.count).to eq 0
+    it 'will not save if the name is less than two characters' do 
+      restaurant = Restaurant.create(name: 'Ab')
+      expect(restaurant).to have(1).error_on(:name)
     end
+
+    it 'will not save if the name is not capitalized' do
+      restaurant = Restaurant.create(name: 'abc')
+      expect(restaurant).to have(1).error_on(:name)
+    end
+
+    it 'cannot save if there is no cuisine' do 
+      restaurant = Restaurant.create(name: "Whoop Burger")
+      expect(restaurant).to have(1).error_on(:cuisine)
+    end
+
+    it 'cannot have duplicate restaurant entries' do 
+      restaurant1 = Restaurant.create(name: "Whoop Burger", cuisine: 'American')
+      restaurant2 = Restaurant.create(name: "Whoop Burger", cuisine: 'American')
+      expect(Restaurant.count).to eq 1
+    end 
   end 
 end

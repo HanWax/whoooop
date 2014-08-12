@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
 	has_many :reviews
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true, length: {minimum: 3}, format: /\A[A-Z]/
+	validates :cuisine, presence: true
 
 	def average_rating
 		return calculate_average_rating.round(1) if has_average?

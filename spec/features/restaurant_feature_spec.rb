@@ -25,9 +25,9 @@ describe 'restaurants' do
 		end
 	end
 
-	context 'with resturants' do
+	context 'with restaurants' do
 		before do
-			Restaurant.create(name: "Whoop Burgers")
+			Restaurant.create(name: "Whoop Burgers", cuisine: "American")
 		end
 
 		it 'should display restaurants' do

@@ -1,3 +1,11 @@
+<% if @restaurant.errors.any? %>
+The form has the following errors:
+	<% @restaurant.errors.full_messages.each do |message| %>
+		<%= message %>
+	<% end %> 
+<% end %> 
+
+
 Enter review for <%= @restaurant.name %>
 
 <%= form_for [@restaurant, @review] do |f| %>
