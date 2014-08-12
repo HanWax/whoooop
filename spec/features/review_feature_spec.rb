@@ -3,22 +3,15 @@ require 'rails_helper'
 describe 'reviews' do 
 
 	before(:each) do 
-		Restaurant.create(name: "Whoop Bar", cuisine: "Drinks")
+		@restaurant = Restaurant.create(name: "Whoop Bar", cuisine: "Drinks")
 	end 
 
 	context 'no reviews added' do 
 		it 'should display no reviews' do 
-<<<<<<< HEAD
-			restaurant = Restaurant.find_by(name: "Whoop Bar")
-=======
->>>>>>> development
 			visit '/restaurants'
 			click_on("Write review")
 			expect(page).to have_content("Enter review for Whoop Bar")
 		end
-<<<<<<< HEAD
-	end 
-=======
 
 		it 'can write a review' do
 			visit '/restaurants'
@@ -29,6 +22,15 @@ describe 'reviews' do
 			expect(page).to have_content("Amazing")
 		end
 	end
->>>>>>> development
+
+	context 'displaying reviews' do 
+		it 'should display a restaurant with the average rating' do
+			@restaurant.reviews.create(thoughts: "great", rating: 4)
+			@restaurant.reviews.create(thoughts: "terrible", rating: 2)
+
+			visit '/restaurants'
+			expect(page).to have_content("Average rating: 3")
+		end
+	end 
  	
 end

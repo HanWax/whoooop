@@ -14,4 +14,13 @@ RSpec.describe Restaurant, :type => :model do
   		expect(restaurant.name).to eq("Whoop Sushi")
   	end 
   end
+
+  context 'ratings' do
+    it 'knows its ratings average' do 
+      restaurant = Restaurant.create(name: "Whoop Bar", cuisine: "Drinks")
+      restaurant.reviews.create(thoughts: "The best bar in town", rating: 5)
+      restaurant.reviews.create(thoughts: "Second to none", rating: 3)
+      expect(restaurant.average_rating).to eq(4)
+    end  
+  end
 end
