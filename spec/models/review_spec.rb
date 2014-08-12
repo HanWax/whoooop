@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Review, :type => :model do
   context 'validations' do
-  	it 'requires a rating' do
+  	it 'requires a rating between 1 and 5' do
   		restaurant = Restaurant.create(name: "Whoop Burger", cuisine: "American")
-  		restaurant.reviews.create(thoughts: "great")
-  		expect(restaurant.reviews.count).to eq 0
+  		review = restaurant.reviews.create(thoughts: "great", rating: 100)
+  		expect(review).to have(1).error_on(:rating)
   	end
   end
 end
