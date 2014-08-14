@@ -1,49 +1,26 @@
-
-<% if @restaurants.any? %>
-<section class="Restaurantfeed">
-	<% @restaurants.each do |restaurant| %>
-	<article>
-		<h2><%= restaurant.name %></h2>
-		<section class='link'>
-			<%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-			<%= link_to 'Delete', restaurant_path(restaurant), method: :delete %>
-
-			<%= link_to 'Write review', new_restaurant_review_path(restaurant) %>
-		</section>
-
-		<p>(<%= restaurant.cuisine %>)</p> 
-		<h3>Average rating: <%= restaurant.average_rating %></h3>
-		<% if restaurant.reviews.any? %>
-			<p><%= restaurant.reviews.first.thoughts %> (<%= restaurant.reviews.first.rating %>)</p> 
-		<% end %>
-	</article>	 
-	<% end %>
-</section>
-<% else %>
-No restaurants available
-<% end %>
-
-
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
-    <h2><%= restaurant.name %></h2>
+    <h2><%= restaurant.name %> - (<%= restaurant.cuisine %>)</h2>
     <h3>Average rating: <%= star_rating(restaurant.average_rating) %></h3>
     <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
     <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
-    <%= link_to "Write review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
+    <%= link_to "Write review for #{restaurant.name}", new_restaurant_review_path(restaurant) %>
 
     <ul>
       <% restaurant.reviews.each do |review| %>
         <li>
           <%= "#{review.thoughts} (#{star_rating(review.rating)})" %> - 
-          <em>Posted <%= time_ago_in_words(review.created_at) %> ago</em>
+          <span class='like_count'>
+          <%= review.likes.count %> 
+          </span> whoops
 
+        <%= link_to 'Whoop this review', review_likes_path(review), class: 'like-link' %>
         </li>
       <% end %>
     </ul>
   <% end %>
 <% else %>
-  No restaurants yet
+  No restaurants available
 <% end %>
 
 <%= link_to 'Add a restaurant', new_restaurant_path %>

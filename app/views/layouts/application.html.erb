@@ -3,19 +3,22 @@
 <head>
   <title>Whoop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ 
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<header>
 		<h1>Whoop!</h1>
 		<%= link_to 'Add restaurant', new_restaurant_path %>
+		<%= link_to 'Register', new_user_registration_path %> 
 
 	</header>
 
 	
 <%= notice %>
 <%= yield %>
+
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>
