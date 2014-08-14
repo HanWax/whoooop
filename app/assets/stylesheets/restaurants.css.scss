@@ -18,35 +18,10 @@ $blue:      #268bd2;
 $cyan:      #2aa198;
 $green:     #859900;
 
-.Restaurantfeed {
-	
-	margin-left: 1%;
-	width: 50%;
-
-	article {
-		padding: 1%;
-		border: 1px solid;
-		border-radius: 6px;
-		margin-bottom: 1%;
-	}
-
-	h2 {
-		color: $cyan;
-	}
-
-	.link {
-		text-align: right;
-	}
-
-	a {
-		color: $red;
-	}
-
-	p {
-		color: $base00;
-	}
-
-	h3 {
-		color: $green;
-	}
+article {
+	font-family: Helvetica-Neue, sans-serif;
+	padding: 5%;
+	margin: 5%;
+	border: 5px solid gray;
+	border-radius: 8px;
 }

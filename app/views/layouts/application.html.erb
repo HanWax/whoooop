@@ -11,11 +11,17 @@
 		<h1>Whoop!</h1>
 		<%= link_to 'Add restaurant', new_restaurant_path %>
 		<%= link_to 'Register', new_user_registration_path %> 
+		<%= link_to 'Sign in', new_user_session_path %>
 
+			<% if user_signed_in? %>
+				<h3>Logged in as <%= current_user.email %></h3>
+				<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+			<% end %>
 	</header>
 
 	
 <%= notice %>
+	
 <%= yield %>
 
  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
