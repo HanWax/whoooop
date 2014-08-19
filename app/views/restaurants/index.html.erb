@@ -16,8 +16,8 @@
        <tr>
          <td> <%= "#{review.thoughts} (#{star_rating(review.rating)})" %></td>
           <span class='like_count'>
-          <td><%= review.likes.count %> </td>
-          </span> whoops
+          <td><%= review.likes.count %> 
+          </span> whoops</td>
 
         <td><div class='whoop'><%= link_to 'Whoop this review', review_likes_path(review), class: 'like-link' %></div></td>
         </tr>
