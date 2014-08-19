@@ -22,6 +22,44 @@ article {
 	font-family: Helvetica-Neue, sans-serif;
 	padding: 5%;
 	margin: 5%;
-	border: 5px solid gray;
-	border-radius: 8px;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: large;
+
+}
+
+h3 {
+	display: inline-block;
+}
+
+section {
+	background-color: #FCF0AD;
+	padding: 10px;
+	box-shadow: 3px 3px 2px #FCF0AD;
+	border-radius: 5px;
+}
+
+
+	a {
+		font-size: medium;
+		float: right;
+		padding-right: 2%;
+		display: inline-block;
+		text-decoration: none;
+		color: black;
+		text-shadow: 1px 1px gray;
+	}
+	a:visited {
+    color: yellow;
+	}
+
+	a:hover {
+    color: white;
+	}
+
+.whoop {
+	text-decoration: none;
+	text-align: right;
 }
